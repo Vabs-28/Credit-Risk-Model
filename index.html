@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPS Prediction Model</title>
+    <style>
+        /* Dark Theme & Centered Layout */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Modern Card Form */
+        .container {
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4da8da;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+            color: #a0a0a0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 6px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4da8da;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            background-color: #4da8da;
+            color: #121212;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #357abd;
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #2a2a2a;
+            border-radius: 6px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .result-text {
+            font-size: 1.2em;
+            margin: 0;
+            color: #e0e0e0;
+        }
+
+        .highlight {
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>EPS Prediction AI</h1>
+        
+        <form action="/predict" method="POST">
+            
+            <div class="form-group">
+                <label for="ROCE (%)">ROCE (%):</label>
+                <input type="text" id="ROCE (%)" name="ROCE (%)" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="CASA (%)">CASA (%):</label>
+                <input type="text" id="CASA (%)" name="CASA (%)" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="Return on Equity / Networth (%)">Return on Equity / Networth (%):</label>
+                <input type="text" id="Return on Equity / Networth (%)" name="Return on Equity / Networth (%)" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="Non-Interest Income/Total Assets (%)">Non-Interest Income/Total Assets (%):</label>
+                <input type="text" id="Non-Interest Income/Total Assets (%)" name="Non-Interest Income/Total Assets (%)" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="Operating Profit/Total Assets (%)">Operating Profit/Total Assets (%):</label>
+                <input type="text" id="Operating Profit/Total Assets (%)" name="Operating Profit/Total Assets (%)" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="Operating Expenses/Total Assets (%)">Operating Expenses/Total Assets (%):</label>
+                <input type="text" id="Operating Expenses/Total Assets (%)" name="Operating Expenses/Total Assets (%)" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="Interest Expenses/Total Assets (%)">Interest Expenses/Total Assets (%):</label>
+                <input type="text" id="Interest Expenses/Total Assets (%)" name="Interest Expenses/Total Assets (%)" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="Face_value">Face value:</label>
+                <input type="text" id="Face_value" name="Face_value" required autocomplete="off">
+            </div>
+
+            <input type="submit" value="Predict EPS">
+
+            {% if result %}
+            <div class="result-box">
+                <p class="result-text">Predicted EPS: <br><span class="highlight">₹{{result}}</span></p>
+            </div>
+            {% endif %}
+
+        </form>
+    </div>
+
+</body>
+</html>
